@@ -107,16 +107,16 @@ body {
 }
 
 .mobile-nav ul li {
-    margin: 10px 0; /* Spasi antar item menu lebih kecil */
+    margin: 8px 0; /* Spasi antar item menu diperkecil */
 }
 
 /* Teks dan Kotak di dalam Menu Hamburger (PERUBAHAN UTAMA) */
 .mobile-nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 1.2em; /* Ukuran font di dalam menu hamburger diperkecil */
+    font-size: 1em; /* Ukuran font di dalam menu hamburger diperkecil */
     font-weight: 500;
-    padding: 8px 20px; /* Padding lebih kecil */
+    padding: 6px 15px; /* Padding lebih kecil */
     transition: background-color 0.3s ease, border-radius 0.3s ease;
     border-radius: 8px; /* Rounded corners */
     display: block; /* Agar padding dan margin berfungsi sebagai blok */
@@ -124,7 +124,7 @@ body {
 
 .mobile-nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
+    border-radius: 10px; /* Border radius sedikit disesuaikan */
 }
 
 /* Desktop Navigation */
