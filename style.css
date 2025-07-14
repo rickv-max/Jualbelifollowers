@@ -52,14 +52,14 @@ body {
     font-weight: 600; /* Sedikit lebih tebal */
 }
 
-/* Hamburger Menu Icon */
+/* Hamburger Menu Icon (Revisi Ukuran) */
 .hamburger-menu {
     display: none;
-    font-size: 1.2em; /* Ukuran ikon lebih kecil (revisi) */
+    font-size: 1em; /* Lebih kecil lagi */
     cursor: pointer;
     color: white;
     z-index: 1001;
-    padding: 8px;
+    padding: 6px; /* Padding sedikit lebih kecil */
     border-radius: 6px; /* Rounded corners */
     transition: background-color 0.2s ease;
 }
@@ -88,11 +88,12 @@ body {
     left: 0;
 }
 
+/* Close Button (Revisi Ukuran) */
 .mobile-nav .close-btn {
     position: absolute;
     top: 20px;
     right: 20px;
-    font-size: 1.4em; /* Ukuran ikon tutup (revisi) */
+    font-size: 1.2em; /* Lebih kecil lagi */
     padding: 8px;
     border-radius: 6px;
     color: white; /* Ensure close button is white */
@@ -401,7 +402,7 @@ body {
     margin-bottom: 12px;
     text-align: center;
     font-weight: 600;
-}
+    }
 
 .paket-item p {
     margin-bottom: 5px; /* Margin lebih kecil */
