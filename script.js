@@ -1,543 +1,197 @@
-/* Variabel Warna Baru (Minimalis) */
-:root {
-    --primary-dark: #212121; /* Hampir Hitam */
-    --secondary-gray: #757575; /* Abu-abu Sedang */
-    --accent-blue: #42A5F5; /* Biru Lembut */
-    --text-dark: #424242; /* Abu-abu Gelap untuk Teks */
-    --light-bg: #FAFAFA; /* Hampir Putih */
-    --border-light: #E0E0E0; /* Abu-abu Sangat Terang */
-    --button-hover: #2196F3; /* Biru Lebih Gelap untuk Hover */
-    --shadow-color: rgba(0, 0, 0, 0.05); /* Bayangan Sangat Halus */
-}
+document.addEventListener('DOMContentLoaded', () => {
+    // Data Produk (sesuai pricelist Anda)
+    const products = {
+        instagram: {
+            followers: [
+                { amount: 500, price: 28000 },
+                { amount: 1000, price: 56000 },
+                { amount: 1500, price: 84000 },
+                { amount: 2000, price: 112000 },
+                { amount: 2500, price: 140000 },
+                { amount: 3000, price: 168000 },
+                { amount: 5000, price: 280000 },
+                { amount: 10000, price: 560000 },
+            ],
+            likes: [
+                { amount: 500, price: 5000 },
+                { amount: 1000, price: 10000 },
+                { amount: 2000, price: 20000 },
+                { amount: 3000, price: 30000 },
+                { amount: 5000, price: 50000 },
+                { amount: 10000, price: 100000 },
+                { amount: 15000, price: 150000 },
+                { amount: 20000, price: 200000 },
+            ],
+            views_reels: [
+                { amount: 1000, price: 3000 },
+                { amount: 10000, price: 30000 },
+                { amount: 20000, price: 60000 },
+                { amount: 30000, price: 90000 },
+                { amount: 50000, price: 150000 },
+            ],
+        },
+        tiktok: {
+            followers: [
+                { amount: 500, price: 25000 },
+                { amount: 1000, price: 50000 },
+                { amount: 1500, price: 75000 },
+                { amount: 2000, price: 100000 },
+                { amount: 2500, price: 125000 },
+                { amount: 3000, price: 150000 },
+                { amount: 5000, price: 250000 },
+                { amount: 10000, price: 500000 },
+            ],
+            likes: [
+                { amount: 500, price: 2500 },
+                { amount: 1000, price: 5000 },
+                { amount: 2000, price: 10000 },
+                { amount: 3000, price: 15000 },
+                { amount: 5000, price: 25000 },
+                { amount: 10000, price: 50000 },
+                { amount: 15000, price: 75000 },
+                { amount: 20000, price: 100000 },
+            ],
+            views: [
+                { amount: 1000, price: 1500 },
+                { amount: 10000, price: 15000 },
+                { amount: 20000, price: 30000 },
+                { amount: 30000, price: 45000 },
+                { amount: 50000, price: 75000 },
+            ],
+        },
+        paket_hemat: {
+            ig: {
+                name: "Paket Hemat Instagram",
+                details: "1000 Followers IG, 2000 Likes IG, 10000 Views Reels",
+                bonus: "5rb views",
+                price: 90000
+            },
+            tiktok: {
+                name: "Paket Hemat TikTok",
+                details: "1000 Followers TikTok, 2000 Likes TikTok, 30000 Views TikTok",
+                bonus: "10rb views",
+                price: 85000
+            }
+        }
+    };
 
-/* Reset dan Styling Umum */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+    // Fungsi untuk memformat angka menjadi format Rupiah
+    const formatRupiah = (number) => {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        }).format(number);
+    };
 
-body {
-    font-family: 'Inter', sans-serif; /* Menggunakan Inter untuk tampilan modern */
-    line-height: 1.5; /* Line height lebih rapat */
-    color: var(--text-dark);
-    background-color: var(--light-bg);
-    overflow-x: hidden;
-    font-size: 15px; /* Ukuran font dasar sedikit lebih kecil */
-}
+    // Fungsi untuk merender produk ke dalam DOM
+    const renderProducts = (platform, type, elementIndex) => {
+        // Selector yang lebih spesifik untuk menargetkan div product-list dalam product-category yang benar
+        const productListDiv = document.querySelector(`#${platform} .product-category:nth-of-type(${elementIndex}) .product-list`);
+        if (!productListDiv) return;
 
-.container {
-    max-width: 1000px; /* Lebih sempit untuk fokus */
-    margin: 0 auto;
-    padding: 15px; /* Padding lebih kecil */
-}
+        let htmlContent = '';
+        products[platform][type].forEach(item => {
+            htmlContent += `
+                <div class="product-item">
+                    <span class="name">${item.amount} ${type.replace('_', ' ')}</span>
+                    <span class="price">${formatRupiah(item.price)}</span>
+                    <button class="btn btn-secondary order-btn" data-product-id="${platform}_${type}_${item.amount}" data-price="${item.price}">Pesan</button>
+                </div>
+            `;
+        });
+        productListDiv.innerHTML = htmlContent;
+    };
 
-/* Header */
-.main-header {
-    background-color: var(--primary-dark);
-    color: white;
-    padding: 12px 20px; /* Padding lebih kecil */
-    box-shadow: 0 2px 4px var(--shadow-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom-left-radius: 8px; /* Rounded corners */
-    border-bottom-right-radius: 8px; /* Rounded corners */
-}
+    // Render semua produk saat DOM dimuat (mereka akan disembunyikan oleh CSS secara default)
+    renderProducts('instagram', 'followers', 1);
+    renderProducts('instagram', 'likes', 2);
+    renderProducts('instagram', 'views_reels', 3);
+    renderProducts('tiktok', 'followers', 1);
+    renderProducts('tiktok', 'likes', 2);
+    renderProducts('tiktok', 'views', 3);
 
-.main-header h1 {
-    font-size: 2em; /* Ukuran font header */
-    letter-spacing: 1px;
-    margin: 0;
-    font-weight: 600; /* Sedikit lebih tebal */
-}
+    // Fungsi untuk menampilkan bagian tertentu dan menyembunyikan bagian lainnya
+    const showSection = (sectionId) => {
+        const allSections = document.querySelectorAll('.page-section');
+        allSections.forEach(section => {
+            section.classList.remove('active'); // Sembunyikan semua bagian dengan menghapus kelas 'active'
+        });
 
-/* Hamburger Menu Icon */
-.hamburger-menu {
-    display: none;
-    font-size: 1.2em; /* Ukuran ikon lebih kecil (revisi) */
-    cursor: pointer;
-    color: white;
-    z-index: 1001;
-    padding: 8px;
-    border-radius: 6px; /* Rounded corners */
-    transition: background-color 0.2s ease;
-}
-.hamburger-menu:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-}
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+            targetSection.classList.add('active'); // Tampilkan bagian target dengan menambahkan kelas 'active'
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Gulir ke bagian yang ditampilkan
+        }
+    };
 
-/* Mobile Navigation Overlay */
-.mobile-nav {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background-color: var(--primary-dark);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: left 0.3s ease-in-out;
-    z-index: 1000;
-}
+    // Fungsionalitas menu hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    const closeMobileNav = document.getElementById('close-mobile-nav');
+    const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
+    const showProductsBtn = document.querySelector('.show-products-btn');
 
-.mobile-nav.active {
-    left: 0;
-}
+    // Event listener untuk membuka menu hamburger
+    hamburger.addEventListener('click', () => {
+        mobileNav.classList.add('active');
+    });
 
-.mobile-nav .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 1.4em; /* Ukuran ikon tutup (revisi) */
-    padding: 8px;
-    border-radius: 6px;
-    color: white; /* Ensure close button is white */
-    cursor: pointer;
-}
+    // Event listener untuk menutup menu hamburger
+    closeMobileNav.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+    });
 
-.mobile-nav ul {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-}
+    // Tangani klik pada tautan navigasi (desktop dan mobile)
+    navLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault(); // Mencegah perilaku default tautan
+            const targetSectionId = event.target.dataset.targetSection; // Ambil ID bagian target dari atribut data-target-section
+            if (targetSectionId) {
+                showSection(targetSectionId); // Tampilkan bagian yang dipilih
+            }
+            mobileNav.classList.remove('active'); // Tutup menu mobile jika terbuka
+        });
+    });
 
-.mobile-nav ul li {
-    margin: 12px 0; /* Spasi antar item menu */
-}
-
-.mobile-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.4em; /* Ukuran font lebih kecil */
-    font-weight: 500;
-    padding: 10px 25px;
-    transition: background-color 0.3s ease, border-radius 0.3s ease;
-    border-radius: 8px; /* Rounded corners */
-    display: block;
-}
-
-.mobile-nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-}
-
-/* Desktop Navigation */
-.desktop-nav {
-    display: block;
-}
-.desktop-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.desktop-nav ul li {
-    margin: 0 12px; /* Spasi antar item menu */
-}
-.desktop-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 8px 15px;
-    transition: background-color 0.3s ease, border-radius 0.3s ease;
-    border-radius: 6px; /* Rounded corners */
-    font-size: 0.95em; /* Ukuran font standar */
-}
-.desktop-nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 10px;
-}
-
-/* Hero Section */
-.hero-section {
-    text-align: center;
-    padding: 60px 20px; /* Padding lebih kecil */
-    background: linear-gradient(to right, var(--primary-dark), var(--secondary-gray));
-    color: white;
-    margin-bottom: 30px;
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 6px 12px var(--shadow-color); /* Bayangan lebih halus */
-}
-
-.hero-section h2 {
-    font-size: 2.5em; /* Ukuran font lebih kecil */
-    margin-bottom: 15px;
-    font-weight: 700;
-}
-
-.hero-section p {
-    font-size: 1em; /* Ukuran font standar */
-    margin-bottom: 25px;
-    max-width: 600px; /* Lebar teks lebih terkontrol */
-    margin-left: auto;
-    margin-right: auto;
-    opacity: 0.9;
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 22px;
-    border: none;
-    border-radius: 8px; /* Rounded corners */
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    font-size: 0.95em;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-.btn-primary {
-    background-color: var(--accent-blue);
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: var(--button-hover);
-}
-
-.btn-secondary {
-    background-color: white;
-    color: var(--primary-dark);
-    border: 1px solid var(--border-light);
-}
-
-.btn-secondary:hover {
-    background-color: var(--primary-dark);
-    color: white;
-}
-
-/* Trust Section */
-.trust-section {
-    text-align: center;
-    padding: 30px 20px; /* Padding lebih kecil */
-    background-color: white;
-    border-radius: 10px; /* Rounded corners */
-    margin-bottom: 30px;
-    box-shadow: 0 2px 5px var(--shadow-color);
-}
-.trust-section h2 {
-    font-size: 1.8em; /* Ukuran font lebih kecil */
-    margin-bottom: 15px;
-    color: var(--primary-dark);
-    font-weight: 600;
-}
-.trust-section > p { /* Target paragraf langsung di trust-section */
-    font-size: 0.95em;
-    margin-bottom: 25px;
-    color: var(--secondary-gray);
-}
-.trust-points {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px; /* Spasi antar item */
-    margin-top: 20px;
-}
-.trust-point-item {
-    flex: 1 1 220px; /* Fleksibilitas item */
-    max-width: 240px; /* Batas lebar */
-    padding: 20px; /* Padding lebih kecil */
-    background-color: var(--light-bg);
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 1px 3px var(--shadow-color);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.trust-point-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-}
-.trust-point-item i {
-    font-size: 2.5em; /* Ukuran ikon lebih kecil */
-    color: var(--accent-blue);
-    margin-bottom: 12px;
-}
-.trust-point-item h3 {
-    font-size: 1.2em; /* Ukuran font lebih kecil */
-    color: var(--primary-dark);
-    margin-bottom: 8px;
-    font-weight: 600;
-}
-.trust-point-item p {
-    font-size: 0.85em; /* Ukuran font lebih kecil */
-    color: var(--secondary-gray);
-}
-
-
-/* Product Sections */
-.page-section {
-    margin-bottom: 30px; /* Margin lebih kecil */
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 2px 5px var(--shadow-color);
-    display: none; /* Sembunyikan secara default */
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-.page-section.active {
-    display: block; /* Tampilkan jika aktif */
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.platform-section h2, .paket-hemat-section h2, .garansi-section h2, .contact-section h2 {
-    text-align: center;
-    margin-bottom: 25px; /* Margin lebih kecil */
-    color: var(--primary-dark);
-    font-size: 2em; /* Ukuran font lebih kecil */
-    position: relative;
-    padding-bottom: 10px;
-    font-weight: 600;
-}
-
-.platform-section h2::after, .paket-hemat-section h2::after, .garansi-section h2::after, .contact-section h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px; /* Lebih kecil */
-    height: 2px; /* Lebih tipis */
-    background-color: var(--accent-blue);
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Min lebar kolom lebih kecil */
-    gap: 20px; /* Spasi antar item lebih kecil */
-}
-
-.product-category {
-    background-color: var(--light-bg);
-    border-radius: 8px; /* Rounded corners */
-    padding: 18px; /* Padding lebih kecil */
-    box-shadow: 0 1px 3px var(--shadow-color);
-}
-
-.product-category h3 {
-    text-align: center;
-    margin-bottom: 15px; /* Margin lebih kecil */
-    color: var(--primary-dark);
-    font-size: 1.4em; /* Ukuran font lebih kecil */
-    border-bottom: 1px solid var(--border-light); /* Border lebih tipis */
-    padding-bottom: 8px;
-    font-weight: 600;
-}
-
-.product-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0; /* Padding lebih kecil */
-    border-bottom: 1px dashed var(--border-light);
-}
-
-.product-item:last-child {
-    border-bottom: none;
-}
-
-.product-item .name {
-    font-weight: 500;
-    color: var(--text-dark);
-    font-size: 0.9em; /* Ukuran font lebih kecil */
-    flex-grow: 1; /* Memastikan nama mengambil ruang yang tersedia */
-}
-
-.product-item .price {
-    color: var(--accent-blue);
-    font-weight: 600;
-    font-size: 0.95em; /* Ukuran font sedikit lebih kecil */
-    margin-left: 10px;
-    white-space: nowrap; /* Mencegah harga pecah baris */
-}
-.product-item .btn {
-    padding: 5px 10px; /* Tombol lebih kecil */
-    font-size: 0.8em; /* Font tombol lebih kecil */
-    margin-left: 10px;
-    border-radius: 6px;
-}
-
-
-/* Paket Hemat Section */
-.paket-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px; /* Spasi antar item lebih kecil */
-}
-
-.paket-item {
-    background-color: white;
-    color: var(--text-dark);
-    border-radius: 10px; /* Rounded corners */
-    padding: 25px; /* Padding lebih kecil */
-    box-shadow: 0 1px 5px var(--shadow-color);
-    flex: 1 1 320px; /* Fleksibel, maksimal 320px per item */
-    max-width: 48%; /* Batas lebar untuk 2 kolom */
-    text-align: left;
-}
-@media (max-width: 768px) {
-    .paket-item {
-        max-width: 90%; /* Penuh lebar di layar kecil */
-    }
-}
-
-
-.paket-item h3 {
-    color: var(--primary-dark);
-    font-size: 1.6em; /* Ukuran font lebih kecil */
-    margin-bottom: 12px;
-    text-align: center;
-    font-weight: 600;
-}
-
-.paket-item p {
-    margin-bottom: 5px; /* Margin lebih kecil */
-    font-size: 0.9em; /* Ukuran font lebih kecil */
-}
-
-.paket-item .price {
-    font-size: 1.4em; /* Ukuran font lebih kecil */
-    font-weight: 700;
-    color: var(--accent-blue);
-    text-align: center;
-    margin: 15px 0;
-}
-
-.paket-item .bonus {
-    font-style: italic;
-    font-size: 0.8em; /* Ukuran font lebih kecil */
-    color: var(--secondary-gray);
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.paket-item .btn {
-    width: 100%;
-    text-align: center;
-    margin-top: 10px;
-}
-
-/* Garansi Section */
-.garansi-section {
-    background-color: var(--primary-dark); /* Warna gelap untuk kontras */
-    color: white;
-}
-.garansi-section h2 {
-    color: white;
-}
-.garansi-section i {
-    color: var(--accent-blue);
-}
-
-/* Contact Section */
-.contact-section {
-    background-color: white;
-}
-.contact-section h2 {
-    color: var(--primary-dark);
-}
-.contact-section i {
-    color: var(--primary-dark);
-}
-.contact-section a {
-    color: var(--primary-dark);
-}
-
-/* Footer */
-.main-footer {
-    background-color: var(--primary-dark);
-    color: white;
-    text-align: center;
-    padding: 15px 0; /* Padding lebih kecil */
-    margin-top: 30px;
-    font-size: 0.85em; /* Ukuran font lebih kecil */
-    border-top-left-radius: 8px; /* Rounded corners */
-    border-top-right-radius: 8px; /* Rounded corners */
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .main-header {
-        padding: 12px 15px;
-    }
-    .main-header h1 {
-        font-size: 1.6em;
-    }
-    .desktop-nav {
-        display: none;
-    }
-    .hamburger-menu {
-        display: block;
+    // Tangani klik tombol "Lihat Layanan Kami"
+    if (showProductsBtn) {
+        showProductsBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            // Ketika tombol "Lihat Layanan Kami" diklik, tampilkan bagian Instagram
+            showSection('instagram');
+        });
     }
 
-    .hero-section {
-        padding: 40px 15px;
-    }
-    .hero-section h2 {
-        font-size: 2em;
-    }
-    .hero-section p {
-        font-size: 0.9em;
-    }
+    // Tangani klik tombol "Pesan" pada setiap produk
+    document.querySelectorAll('.order-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const productId = event.target.dataset.productId;
+            const price = parseFloat(event.target.dataset.price);
+            let message = '';
 
-    .trust-section {
-        padding: 25px 15px;
-    }
-    .trust-section h2 {
-        font-size: 1.5em;
-    }
-    .trust-points {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .trust-point-item {
-        flex: none;
-        width: 100%;
-        max-width: none; /* Hapus max-width di mobile */
-        padding: 18px;
-    }
-    .trust-point-item i {
-        font-size: 2em;
-    }
-    .trust-point-item h3 {
-        font-size: 1.1em;
-    }
-    .trust-point-item p {
-        font-size: 0.8em;
-    }
+            // Buat pesan WhatsApp berdasarkan ID produk
+            if (productId.startsWith('paket_ig_hemat')) {
+                message = `Halo admin, saya ingin memesan Paket Hemat Instagram (${products.paket_hemat.ig.details} + bonus ${products.paket_hemat.ig.bonus}) dengan harga ${formatRupiah(products.paket_hemat.ig.price)}.`;
+            } else if (productId.startsWith('paket_tiktok_hemat')) {
+                message = `Halo admin, saya ingin memesan Paket Hemat TikTok (${products.paket_hemat.tiktok.details} + bonus ${products.paket_hemat.tiktok.bonus}) dengan harga ${formatRupiah(products.paket_hemat.tiktok.price)}.`;
+            } else {
+                const [platform, type, amount] = productId.split('_');
+                // Sesuaikan nama tipe untuk pesan WhatsApp agar lebih mudah dibaca
+                let formattedType = type.replace('views_reels', 'Views Reels').replace('views', 'Views').replace('followers', 'Followers').replace('likes', 'Likes');
+                message = `Halo admin, saya ingin memesan ${amount} ${formattedType} ${platform} dengan harga ${formatRupiah(price)}.`;
+            }
 
-    .platform-section h2, .paket-hemat-section h2, .garansi-section h2, .contact-section h2 {
-        font-size: 1.4em;
-    }
+            // Nomor WhatsApp Anda
+            const whatsappNumber = '6285856618965';
 
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
+            // Buat dan buka tautan WhatsApp
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappLink, '_blank');
+        });
+    });
 
-    .paket-grid {
-        flex-direction: column;
-    }
-
-    .paket-item {
-        max-width: 100%;
-    }
-    .product-item .name, .product-item .price, .product-item .btn {
-        font-size: 0.85em; /* Menyesuaikan ukuran font produk di mobile */
-    }
-    .product-item .btn {
-        padding: 4px 8px;
-    }
-}
+    // Kondisi awal: Hanya bagian hero dan why-choose-us yang aktif saat halaman pertama kali dimuat
+    document.getElementById('hero').classList.add('active');
+    document.getElementById('why-choose-us').classList.add('active');
+});
