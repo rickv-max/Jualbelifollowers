@@ -4,81 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kios Sosmed - Jual Followers, Likes, & Views</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome untuk ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link ke file CSS eksternal -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="main-header">
-        <div class="container">
+        <div class="header-left">
             <h1>Kios Sosmed</h1>
-            <nav>
-                <ul>
-                    <li><a href="#instagram">Instagram</a></li>
-                    <li><a href="#tiktok">TikTok</a></li>
-                    <li><a href="#paket-hemat">Paket Hemat</a></li>
-                    <li><a href="#garansi">Garansi</a></li>
-                    <li><a href="#kontak">Kontak</a></li>
-                </ul>
-            </nav>
+        </div>
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="#" data-target-section="instagram">Instagram</a></li>
+                <li><a href="#" data-target-section="tiktok">TikTok</a></li>
+                <li><a href="#" data-target-section="paket-hemat">Paket Hemat</a></li>
+                <li><a href="#" data-target-section="garansi">Garansi</a></li>
+                <li><a href="#" data-target-section="kontak">Kontak</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger-menu" id="hamburger">
+            <i class="fas fa-bars"></i> <!-- Ikon hamburger standar -->
         </div>
     </header>
 
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="hamburger-menu close-btn" id="close-mobile-nav">
+            <i class="fas fa-times"></i> <!-- Ikon silang standar -->
+        </div>
+        <ul>
+            <li><a href="#" data-target-section="instagram">Instagram</a></li>
+            <li><a href="#" data-target-section="tiktok">TikTok</a></li>
+            <li><a href="#" data-target-section="paket-hemat">Paket Hemat</a></li>
+            <li><a href="#" data-target-section="garansi">Garansi</a></li>
+            <li><a href="#" data-target-section="kontak">Kontak</a></li>
+        </ul>
+    </div>
+
     <main class="container">
-        <section id="hero" class="hero-section">
+        <section id="hero" class="page-section">
             <h2>Tingkatkan Pengaruh Media Sosial Anda!</h2>
-            <p>Dapatkan Followers, Likes, dan Views berkualitas untuk Instagram & TikTok Anda.</p>
-            <a href="#instagram" class="btn btn-primary">Lihat Layanan Kami</a>
+            <p>Dapatkan Followers, Likes, dan Views berkualitas untuk Instagram & TikTok Anda. Kami hadir untuk membantu Anda mencapai potensi penuh di dunia digital dengan layanan yang aman, cepat, dan terpercaya.</p>
+            <a href="#" class="btn btn-primary show-products-btn">Lihat Layanan Kami</a>
         </section>
 
-        <section id="instagram" class="platform-section">
+        <section id="why-choose-us" class="page-section">
+            <h2>Mengapa Memilih Kios Sosmed?</h2>
+            <p>Kami berkomitmen untuk memberikan layanan terbaik dan terpercaya untuk pertumbuhan media sosial Anda.</p>
+            <div class="trust-points">
+                <div class="trust-point-item">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Terpercaya & Aman</h3>
+                    <p>Proses aman dan rahasia, menjaga privasi akun Anda. Ribuan pelanggan telah membuktikan kepuasan mereka.</p>
+                </div>
+                <div class="trust-point-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Proses Cepat</h3>
+                    <p>Pesanan Anda akan diproses dengan cepat setelah pembayaran terkonfirmasi. Waktu adalah uang!</p>
+                </div>
+                <div class="trust-point-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Garansi Penuh</h3>
+                    <p>Kami memberikan garansi 3x24 jam untuk setiap pesanan. Jika tidak masuk, dana kembali 100%.</p>
+                </div>
+                <div class="trust-point-item">
+                    <i class="fas fa-headset"></i>
+                    <h3>Dukungan Pelanggan</h3>
+                    <p>Tim dukungan kami siap membantu Anda dengan pertanyaan atau masalah apa pun yang Anda miliki.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Sections - Hidden by default -->
+        <section id="instagram" class="page-section">
             <h2>Layanan Instagram</h2>
             <div class="product-grid">
+                <!-- Followers Instagram -->
                 <div class="product-category">
                     <h3>Followers Instagram</h3>
                     <div class="product-list">
-                        </div>
+                        <!-- Data ini akan di-generate oleh JS -->
+                    </div>
                 </div>
 
+                <!-- Likes Instagram -->
                 <div class="product-category">
                     <h3>Likes Instagram</h3>
                     <div class="product-list">
-                        </div>
+                        <!-- Data ini akan di-generate oleh JS -->
+                    </div>
                 </div>
 
+                <!-- Views Reels Instagram -->
                 <div class="product-category">
                     <h3>Views Reels Instagram</h3>
                     <div class="product-list">
-                        </div>
+                        <!-- Data ini akan di-generate oleh JS -->
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="tiktok" class="platform-section">
+        <section id="tiktok" class="page-section">
             <h2>Layanan TikTok</h2>
             <div class="product-grid">
+                <!-- Followers TikTok -->
                 <div class="product-category">
                     <h3>Followers TikTok</h3>
                     <div class="product-list">
-                        </div>
+                        <!-- Data ini akan di-generate oleh JS -->
+                    </div>
                 </div>
 
+                <!-- Likes TikTok -->
                 <div class="product-category">
                     <h3>Likes TikTok</h3>
                     <div class="product-list">
-                        </div>
+                        <!-- Data ini akan di-generate oleh JS -->
+                    </div>
                 </div>
 
+                <!-- Views TikTok -->
                 <div class="product-category">
                     <h3>Views TikTok</h3>
                     <div class="product-list">
-                        </div>
+                        <!-- Data ini akan di-generate oleh JS -->
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="paket-hemat" class="paket-hemat-section">
+        <section id="paket-hemat" class="page-section">
             <h2>Paket Hemat</h2>
             <div class="paket-grid">
+                <!-- Paket Instagram -->
                 <div class="paket-item">
                     <h3>Paket Hemat Instagram</h3>
                     <p>1000 Followers Instagram</p>
@@ -88,6 +150,7 @@
                     <p class="bonus">+ Bonus 5rb views</p>
                     <button class="btn btn-secondary order-btn" data-product-id="paket_ig_hemat" data-price="90000">Pesan Sekarang</button>
                 </div>
+                <!-- Paket TikTok -->
                 <div class="paket-item">
                     <h3>Paket Hemat TikTok</h3>
                     <p>1000 Followers TikTok</p>
@@ -100,14 +163,14 @@
             </div>
         </section>
 
-        <section id="garansi" class="garansi-section">
+        <section id="garansi" class="page-section">
             <h2>Garansi & Pengembalian Dana</h2>
             <p><i class="fas fa-shield-alt"></i> **GARANSI 3x24 JAM** order tidak masuk.</p>
             <p><i class="fas fa-money-bill-wave"></i> ADA PENGEMBALIAN DANA 100%.</p>
             <p>Kepuasan Anda adalah prioritas kami. Jika pesanan Anda tidak terproses dalam waktu 3x24 jam, kami akan mengembalikan dana Anda sepenuhnya.</p>
         </section>
 
-        <section id="kontak" class="contact-section">
+        <section id="kontak" class="page-section">
             <h2>Hubungi Kami</h2>
             <p>Untuk pemesanan atau pertanyaan lebih lanjut, silakan hubungi kami:</p>
             <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/6285856618965" target="_blank">0858-5661-8965</a></p>
@@ -117,11 +180,11 @@
 
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 Kios Sosmed. Hak Cipta Dilindungi.</p>
-            <p>Dibuat dengan ❤️ di Malang.</p>
+            <!-- Teks footer yang dihapus -->
         </div>
     </footer>
 
+    <!-- Link ke file JavaScript eksternal -->
     <script src="script.js"></script>
 </body>
 </html>
