@@ -52,14 +52,14 @@ body {
     font-weight: 600; /* Sedikit lebih tebal */
 }
 
-/* Hamburger Menu Icon (Revisi Ukuran) */
+/* Hamburger Menu Icon (tetap kecil) */
 .hamburger-menu {
     display: none;
-    font-size: 1em; /* Lebih kecil lagi */
+    font-size: 1.2em; /* Ukuran ikon hamburger tetap kecil */
     cursor: pointer;
     color: white;
     z-index: 1001;
-    padding: 6px; /* Padding sedikit lebih kecil */
+    padding: 8px;
     border-radius: 6px; /* Rounded corners */
     transition: background-color 0.2s ease;
 }
@@ -88,12 +88,12 @@ body {
     left: 0;
 }
 
-/* Close Button (Revisi Ukuran) */
+/* Close Button (tetap proporsional) */
 .mobile-nav .close-btn {
     position: absolute;
     top: 20px;
     right: 20px;
-    font-size: 1.2em; /* Lebih kecil lagi */
+    font-size: 1.4em; /* Ukuran ikon tutup tetap proporsional */
     padding: 8px;
     border-radius: 6px;
     color: white; /* Ensure close button is white */
@@ -107,15 +107,15 @@ body {
 }
 
 .mobile-nav ul li {
-    margin: 12px 0; /* Spasi antar item menu */
+    margin: 10px 0; /* Spasi antar item menu lebih kecil */
 }
 
 .mobile-nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 1.4em; /* Ukuran font lebih kecil */
+    font-size: 1.2em; /* Ukuran font di dalam menu hamburger diperkecil */
     font-weight: 500;
-    padding: 10px 25px;
+    padding: 8px 20px; /* Padding lebih kecil */
     transition: background-color 0.3s ease, border-radius 0.3s ease;
     border-radius: 8px; /* Rounded corners */
     display: block;
@@ -402,7 +402,7 @@ body {
     margin-bottom: 12px;
     text-align: center;
     font-weight: 600;
-    }
+}
 
 .paket-item p {
     margin-bottom: 5px; /* Margin lebih kecil */
