@@ -52,7 +52,7 @@ body {
     font-weight: 600; /* Sedikit lebih tebal */
 }
 
-/* Hamburger Menu Icon (tetap kecil) */
+/* Hamburger Menu Icon (ukuran ikon itu sendiri) */
 .hamburger-menu {
     display: none;
     font-size: 1.2em; /* Ukuran ikon hamburger tetap kecil */
@@ -88,7 +88,7 @@ body {
     left: 0;
 }
 
-/* Close Button (tetap proporsional) */
+/* Close Button (ikon 'x') */
 .mobile-nav .close-btn {
     position: absolute;
     top: 20px;
@@ -110,6 +110,7 @@ body {
     margin: 10px 0; /* Spasi antar item menu lebih kecil */
 }
 
+/* Teks dan Kotak di dalam Menu Hamburger (PERUBAHAN UTAMA) */
 .mobile-nav ul li a {
     color: white;
     text-decoration: none;
@@ -118,7 +119,7 @@ body {
     padding: 8px 20px; /* Padding lebih kecil */
     transition: background-color 0.3s ease, border-radius 0.3s ease;
     border-radius: 8px; /* Rounded corners */
-    display: block;
+    display: block; /* Agar padding dan margin berfungsi sebagai blok */
 }
 
 .mobile-nav ul li a:hover {
