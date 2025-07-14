@@ -104,10 +104,16 @@ body {
     list-style: none;
     padding: 0;
     text-align: center;
+    /* Menambahkan lebar maksimum untuk menahan menu agar tidak terlalu lebar */
+    max-width: 250px; /* Anda bisa menyesuaikan nilai ini */
+    width: 90%; /* Fleksibel untuk layar kecil */
 }
 
 .mobile-nav ul li {
     margin: 8px 0; /* Spasi antar item menu diperkecil */
+    /* Menambahkan display: flex dan justify-content agar item di tengah */
+    display: flex;
+    justify-content: center;
 }
 
 /* Teks dan Kotak di dalam Menu Hamburger (PERUBAHAN UTAMA) */
@@ -119,7 +125,12 @@ body {
     padding: 6px 15px; /* Padding lebih kecil */
     transition: background-color 0.3s ease, border-radius 0.3s ease;
     border-radius: 8px; /* Rounded corners */
-    display: block; /* Agar padding dan margin berfungsi sebagai blok */
+    /* Ubah display dari block ke inline-block agar lebar mengikuti konten */
+    display: inline-block;
+    /* Anda juga bisa menggunakan display: flex; dan justify-content: center; pada .mobile-nav ul li
+       lalu biarkan a tetap display: block; jika ingin tiap item mengisi lebar li,
+       tapi dengan li diatur agar tidak 100% width.
+       Untuk kasus ini, inline-block pada 'a' lebih sederhana. */
 }
 
 .mobile-nav ul li a:hover {
