@@ -114,13 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const showSection = (sectionId) => {
         const allSections = document.querySelectorAll('.page-section');
         allSections.forEach(section => {
-            section.classList.remove('active'); // Sembunyikan semua bagian dengan menghapus kelas 'active'
+            section.classList.remove('active');
         });
 
         const targetSection = document.getElementById(sectionId);
         if (targetSection) {
-            targetSection.classList.add('active'); // Tampilkan bagian target dengan menambahkan kelas 'active'
-            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Gulir ke bagian yang ditampilkan
+            targetSection.classList.add('active');
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
 
@@ -135,6 +135,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const serviceChoiceModal = document.getElementById('service-choice-modal');
     const closeModalButton = serviceChoiceModal.querySelector('.close-button');
     const modalServiceButtons = serviceChoiceModal.querySelectorAll('.modal-btn');
+
+    // --- Perbaikan Teks Tertimpa (Dynamically set padding for hero section) ---
+    const mainHeader = document.querySelector('.main-header');
+    const heroSection = document.getElementById('hero');
+
+    const adjustHeroPadding = () => {
+        if (mainHeader && heroSection) {
+            const headerHeight = mainHeader.offsetHeight; // Dapatkan tinggi header secara real-time
+            // Tambahkan padding-top asli hero-section ke tinggi header
+            // padding-top asli hero-section adalah 60px (dari CSS)
+            heroSection.style.paddingTop = `${60 + headerHeight}px`;
+        }
+    };
+
+    // Panggil saat DOMContentLoaded dan juga saat window di-resize
+    adjustHeroPadding();
+    window.addEventListener('resize', adjustHeroPadding);
+    // --- Akhir Perbaikan Teks Tertimpa ---
+
 
     // Event listener untuk membuka menu hamburger
     hamburger.addEventListener('click', () => {
@@ -158,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Perubahan Fungsionalitas Tombol "Lihat Layanan Kami" ---
+    // Fungsionalitas Tombol "Lihat Layanan Kami"
     if (showProductsBtn) {
         showProductsBtn.addEventListener('click', (event) => {
             event.preventDefault();
@@ -181,13 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listener untuk tombol pilihan layanan di dalam modal
     modalServiceButtons.forEach(button => {
         button.addEventListener('click', (event) => {
-            const service = event.target.dataset.service; // Ambil 'instagram' atau 'tiktok'
+            const service = event.target.dataset.service; // Ambil 'instagram', 'tiktok', atau 'paket-hemat'
             showSection(service); // Tampilkan bagian layanan yang dipilih
             serviceChoiceModal.style.display = 'none'; // Sembunyikan modal setelah pilihan
         });
     });
-    // --- Akhir Perubahan Fungsionalitas Tombol "Lihat Layanan Kami" ---
-
 
     // Tangani klik tombol "Pesan" pada setiap produk
     document.querySelectorAll('.order-btn').forEach(button => {
