@@ -43,6 +43,11 @@ body {
     align-items: center;
     border-bottom-left-radius: 8px; /* Rounded corners */
     border-bottom-right-radius: 8px; /* Rounded corners */
+    position: fixed; /* Membuat header tetap pada posisi saat di-scroll */
+    top: 0; /* Menempel di bagian atas */
+    left: 0; /* Menempel di kiri */
+    width: 100%; /* Lebar penuh */
+    z-index: 100; /* Memastikan header berada di atas konten lain */
 }
 
 .main-header h1 {
@@ -50,6 +55,7 @@ body {
     letter-spacing: 1px;
     margin: 0;
     font-weight: 600; /* Sedikit lebih tebal */
+    font-family: 'Montserrat', sans-serif; /* Contoh font elegan */
 }
 
 /* Hamburger Menu Icon (ukuran ikon itu sendiri) */
@@ -104,19 +110,17 @@ body {
     list-style: none;
     padding: 0;
     text-align: center;
-    /* Menambahkan lebar maksimum untuk menahan menu agar tidak terlalu lebar */
     max-width: 250px; /* Anda bisa menyesuaikan nilai ini */
     width: 90%; /* Fleksibel untuk layar kecil */
 }
 
 .mobile-nav ul li {
     margin: 8px 0; /* Spasi antar item menu diperkecil */
-    /* Menambahkan display: flex dan justify-content agar item di tengah */
     display: flex;
     justify-content: center;
 }
 
-/* Teks dan Kotak di dalam Menu Hamburger (PERUBAHAN UTAMA) */
+/* Teks dan Kotak di dalam Menu Hamburger */
 .mobile-nav ul li a {
     color: white;
     text-decoration: none;
@@ -125,17 +129,12 @@ body {
     padding: 6px 15px; /* Padding lebih kecil */
     transition: background-color 0.3s ease, border-radius 0.3s ease;
     border-radius: 8px; /* Rounded corners */
-    /* Ubah display dari block ke inline-block agar lebar mengikuti konten */
     display: inline-block;
-    /* Anda juga bisa menggunakan display: flex; dan justify-content: center; pada .mobile-nav ul li
-       lalu biarkan a tetap display: block; jika ingin tiap item mengisi lebar li,
-       tapi dengan li diatur agar tidak 100% width.
-       Untuk kasus ini, inline-block pada 'a' lebih sederhana. */
 }
 
 .mobile-nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 10px; /* Border radius sedikit disesuaikan */
+    border-radius: 10px;
 }
 
 /* Desktop Navigation */
@@ -175,6 +174,7 @@ body {
     margin-bottom: 30px;
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 6px 12px var(--shadow-color); /* Bayangan lebih halus */
+    margin-top: 70px; /* Sesuaikan dengan tinggi header Anda */
 }
 
 .hero-section h2 {
@@ -349,6 +349,32 @@ body {
     font-weight: 600;
 }
 
+.product-list { /* Menambahkan gaya untuk product-list */
+    max-height: 300px; /* Batas tinggi untuk daftar produk */
+    overflow-y: auto; /* Aktifkan scrollbar vertikal jika konten melebihi tinggi */
+    padding-right: 5px; /* Sedikit padding untuk scrollbar */
+}
+
+/* Styling scrollbar untuk WebKit browsers (Chrome, Safari) */
+.product-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.product-list::-webkit-scrollbar-track {
+    background: var(--border-light);
+    border-radius: 10px;
+}
+
+.product-list::-webkit-scrollbar-thumb {
+    background: var(--secondary-gray);
+    border-radius: 10px;
+}
+
+.product-list::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+
 .product-item {
     display: flex;
     justify-content: space-between;
@@ -498,6 +524,7 @@ body {
 
     .hero-section {
         padding: 40px 15px;
+        margin-top: 60px; /* Sesuaikan juga di mobile */
     }
     .hero-section h2 {
         font-size: 2em;
@@ -552,5 +579,85 @@ body {
     }
     .product-item .btn {
         padding: 4px 8px;
+    }
+}
+
+/* --- Gaya untuk Modal Pop-up --- */
+.modal {
+    display: none; /* Sembunyikan modal secara default */
+    position: fixed; /* Tetap di tempat bahkan saat di-scroll */
+    z-index: 200; /* Letakkan di atas konten lain dan header */
+    left: 0;
+    top: 0;
+    width: 100%; /* Lebar penuh */
+    height: 100%; /* Tinggi penuh */
+    overflow: auto; /* Aktifkan scroll jika konten modal terlalu besar */
+    background-color: rgba(0,0,0,0.6); /* Latar belakang gelap transparan */
+    display: flex; /* Gunakan flexbox untuk pemosisian tengah */
+    justify-content: center; /* Pusatkan secara horizontal */
+    align-items: center; /* Pusatkan secara vertikal */
+}
+
+.modal-content {
+    background-color: var(--light-bg);
+    margin: auto; /* Otomatis pusatkan */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    width: 90%; /* Lebar responsif */
+    max-width: 400px; /* Batas lebar maksimum */
+    text-align: center;
+    animation: fadeInScale 0.3s ease-out; /* Animasi muncul */
+}
+
+.modal-content h2 {
+    color: var(--primary-dark);
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+.close-button {
+    color: var(--secondary-gray);
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--primary-dark);
+    text-decoration: none;
+}
+
+.modal-options {
+    display: flex;
+    flex-direction: column; /* Tombol vertikal */
+    gap: 15px; /* Jarak antar tombol */
+}
+
+.modal-btn {
+    width: 100%; /* Tombol lebar penuh di modal */
+    padding: 12px 20px;
+    font-size: 1.1em;
+}
+
+.modal-btn i {
+    margin-right: 10px;
+}
+
+/* Animasi untuk modal */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }
