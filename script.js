@@ -86,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fungsi untuk merender produk ke dalam DOM
     const renderProducts = (platform, type, elementIndex) => {
-        // Selector yang lebih spesifik untuk menargetkan div product-list dalam product-category yang benar
         const productListDiv = document.querySelector(`#${platform} .product-category:nth-of-type(${elementIndex}) .product-list`);
         if (!productListDiv) return;
 
@@ -132,6 +131,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
     const showProductsBtn = document.querySelector('.show-products-btn');
 
+    // Referensi ke elemen modal
+    const serviceChoiceModal = document.getElementById('service-choice-modal');
+    const closeModalButton = serviceChoiceModal.querySelector('.close-button');
+    const modalServiceButtons = serviceChoiceModal.querySelectorAll('.modal-btn');
+
     // Event listener untuk membuka menu hamburger
     hamburger.addEventListener('click', () => {
         mobileNav.classList.add('active');
@@ -145,23 +149,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tangani klik pada tautan navigasi (desktop dan mobile)
     navLinks.forEach(link => {
         link.addEventListener('click', (event) => {
-            event.preventDefault(); // Mencegah perilaku default tautan
-            const targetSectionId = event.target.dataset.targetSection; // Ambil ID bagian target dari atribut data-target-section
+            event.preventDefault();
+            const targetSectionId = event.target.dataset.targetSection;
             if (targetSectionId) {
-                showSection(targetSectionId); // Tampilkan bagian yang dipilih
+                showSection(targetSectionId);
             }
-            mobileNav.classList.remove('active'); // Tutup menu mobile jika terbuka
+            mobileNav.classList.remove('active');
         });
     });
 
-    // Tangani klik tombol "Lihat Layanan Kami"
+    // --- Perubahan Fungsionalitas Tombol "Lihat Layanan Kami" ---
     if (showProductsBtn) {
         showProductsBtn.addEventListener('click', (event) => {
             event.preventDefault();
-            // Ketika tombol "Lihat Layanan Kami" diklik, tampilkan bagian Instagram
-            showSection('instagram');
+            serviceChoiceModal.style.display = 'flex'; // Tampilkan modal
         });
     }
+
+    // Event listener untuk tombol tutup modal
+    closeModalButton.addEventListener('click', () => {
+        serviceChoiceModal.style.display = 'none'; // Sembunyikan modal
+    });
+
+    // Event listener untuk menutup modal jika mengklik di luar konten modal
+    window.addEventListener('click', (event) => {
+        if (event.target == serviceChoiceModal) {
+            serviceChoiceModal.style.display = 'none';
+        }
+    });
+
+    // Event listener untuk tombol pilihan layanan di dalam modal
+    modalServiceButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const service = event.target.dataset.service; // Ambil 'instagram' atau 'tiktok'
+            showSection(service); // Tampilkan bagian layanan yang dipilih
+            serviceChoiceModal.style.display = 'none'; // Sembunyikan modal setelah pilihan
+        });
+    });
+    // --- Akhir Perubahan Fungsionalitas Tombol "Lihat Layanan Kami" ---
+
 
     // Tangani klik tombol "Pesan" pada setiap produk
     document.querySelectorAll('.order-btn').forEach(button => {
