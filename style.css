@@ -1,12 +1,20 @@
 /* Variabel Warna Baru (Minimalis) */
 :root {
-    --primary-dark: #2C73D2; /* Biru Royal untuk elemen gelap utama seperti header */
-    --secondary-gray: #0089BA; /* Biru Teal untuk elemen sekunder */
-    --accent-blue: #845EC2; /* Ungu sebagai warna aksen utama (untuk tombol, harga) */
-    --text-dark: #424242; /* Tetap abu-abu gelap untuk teks di latar terang */
-    --light-bg: #FAFAFA; /* Tetap Hampir Putih untuk latar belakang terang */
-    --border-light: #E0E0E0; /* Tetap Abu-abu Sangat Terang untuk border */
-    --button-hover: #0081CF; /* Biru Cerah untuk efek hover tombol */
+    /* Warna utama yang lebih gelap, cocok untuk teks di latar terang atau elemen solid */
+    --primary-dark: #1A237E; /* Deep Navy Blue (dari palet yang lebih kaya, kontras tinggi) */
+    /* Warna sekunder, seringkali untuk teks pendukung atau elemen abu-abu sebelumnya */
+    --secondary-gray: #4A70D9; /* Mid Blue dari gradien, sebagai pengganti abu-abu sekunder */
+    /* Warna aksen utama yang cerah dan menarik perhatian */
+    --accent-blue: #00A391; /* Vibrant Green dari gradien, untuk tombol, harga */
+    /* Warna teks di latar belakang terang */
+    --text-dark: #424242; /* Tetap abu-abu gelap agar mudah dibaca di latar terang */
+    /* Warna latar belakang terang untuk konten */
+    --light-bg: #FAFAFA; /* Tetap Hampir Putih */
+    /* Warna border terang */
+    --border-light: #E0E0E0; /* Tetap Abu-abu Sangat Terang */
+    /* Warna hover untuk tombol utama */
+    --button-hover: #007D70; /* Sedikit lebih gelap dari accent-blue untuk hover */
+    /* Warna bayangan */
     --shadow-color: rgba(0, 0, 0, 0.15); /* Sedikit lebih gelap agar bayangan lebih terlihat */
 }
 
@@ -18,23 +26,23 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif; /* Menggunakan Inter untuk tampilan modern */
-    line-height: 1.5; /* Line height lebih rapat */
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
     color: var(--text-dark);
     background-color: var(--light-bg);
     overflow-x: hidden;
-    font-size: 15px; /* Ukuran font dasar sedikit lebih kecil */
+    font-size: 15px;
 }
 
 .container {
-    max-width: 1000px; /* Lebih sempit untuk fokus */
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 15px; /* Padding lebih kecil */
+    padding: 15px;
 }
 
 /* Header */
 .main-header {
-    background-color: var(--primary-dark); /* Menggunakan biru royal */
+    background-color: #5E3A8D; /* Deep Purple dari gradien, sebagai latar header solid */
     color: white;
     padding: 12px 20px;
     box-shadow: 0 2px 4px var(--shadow-color);
@@ -80,7 +88,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background-color: var(--primary-dark); /* Menggunakan biru royal */
+    background-color: #5E3A8D; /* Deep Purple untuk latar menu mobile */
     color: white;
     display: flex;
     flex-direction: column;
@@ -167,10 +175,9 @@ body {
 .hero-section {
     text-align: center;
     padding: 60px 20px;
-    /* --- PERUBAHAN GRADIENT BACKGROUND --- */
-    background: linear-gradient(to right, #845EC2, #2C73D2, #0081CF, #0089BA, #008E9B, #008F7A);
-    /* Menggunakan semua warna dari palet Anda untuk gradien yang kaya */
-    color: white;
+    /* --- PERUBAHAN GRADIENT BACKGROUND SESUAI GAMBAR BARU --- */
+    background: linear-gradient(to right, #5E3A8D, #4A70D9, #00A391);
+    color: white; /* Pastikan teks di hero section tetap putih */
     margin-bottom: 30px;
     border-radius: 10px;
     box-shadow: 0 6px 12px var(--shadow-color);
@@ -212,22 +219,22 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--accent-blue); /* Menggunakan warna aksen baru (ungu) */
+    background-color: var(--accent-blue); /* Menggunakan vibrant green */
     color: white;
 }
 
 .btn-primary:hover {
-    background-color: var(--button-hover); /* Menggunakan warna hover baru (biru cerah) */
+    background-color: var(--button-hover); /* Menggunakan darker green */
 }
 
 .btn-secondary {
     background-color: white;
-    color: var(--primary-dark); /* Menggunakan warna biru royal */
+    color: var(--primary-dark); /* Menggunakan deep navy blue */
     border: 1px solid var(--border-light);
 }
 
 .btn-secondary:hover {
-    background-color: var(--primary-dark); /* Menggunakan warna biru royal */
+    background-color: var(--primary-dark); /* Menggunakan deep navy blue */
     color: white;
 }
 
@@ -243,13 +250,13 @@ body {
 .trust-section h2 {
     font-size: 1.8em;
     margin-bottom: 15px;
-    color: var(--primary-dark); /* Menggunakan biru royal */
+    color: var(--primary-dark); /* Menggunakan deep navy blue */
     font-weight: 600;
 }
 .trust-section > p {
     font-size: 0.95em;
     margin-bottom: 25px;
-    color: var(--secondary-gray); /* Menggunakan biru teal */
+    color: var(--secondary-gray); /* Menggunakan mid blue */
 }
 .trust-points {
     display: flex;
@@ -272,19 +279,19 @@ body {
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 .trust-point-item i {
-    color: var(--accent-blue); /* Menggunakan warna aksen baru (ungu) */
+    color: var(--accent-blue); /* Menggunakan vibrant green */
     font-size: 2.5em;
     margin-bottom: 12px;
 }
 .trust-point-item h3 {
     font-size: 1.2em;
-    color: var(--primary-dark); /* Menggunakan biru royal */
+    color: var(--primary-dark); /* Menggunakan deep navy blue */
     margin-bottom: 8px;
     font-weight: 600;
 }
 .trust-point-item p {
     font-size: 0.85em;
-    color: var(--secondary-gray); /* Menggunakan biru teal */
+    color: var(--secondary-gray); /* Menggunakan mid blue */
 }
 
 
@@ -309,7 +316,7 @@ body {
 .platform-section h2, .paket-hemat-section h2, .garansi-section h2, .contact-section h2 {
     text-align: center;
     margin-bottom: 25px;
-    color: var(--primary-dark); /* Menggunakan biru royal */
+    color: var(--primary-dark); /* Menggunakan deep navy blue */
     font-size: 2em;
     position: relative;
     padding-bottom: 10px;
@@ -324,7 +331,7 @@ body {
     transform: translateX(-50%);
     width: 60px;
     height: 2px;
-    background-color: var(--accent-blue); /* Menggunakan warna aksen baru (ungu) */
+    background-color: var(--accent-blue); /* Menggunakan vibrant green */
 }
 
 .product-grid {
@@ -343,7 +350,7 @@ body {
 .product-category h3 {
     text-align: center;
     margin-bottom: 15px;
-    color: var(--primary-dark); /* Menggunakan biru royal */
+    color: var(--primary-dark); /* Menggunakan deep navy blue */
     font-size: 1.4em;
     border-bottom: 1px solid var(--border-light);
     padding-bottom: 8px;
@@ -367,12 +374,12 @@ body {
 }
 
 .product-list::-webkit-scrollbar-thumb {
-    background: var(--secondary-gray); /* Menggunakan biru teal */
+    background: var(--secondary-gray); /* Menggunakan mid blue */
     border-radius: 10px;
 }
 
 .product-list::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark); /* Menggunakan biru royal */
+    background: var(--primary-dark); /* Menggunakan deep navy blue */
 }
 
 
@@ -396,7 +403,7 @@ body {
 }
 
 .product-item .price {
-    color: var(--accent-blue); /* Menggunakan warna aksen baru (ungu) */
+    color: var(--accent-blue); /* Menggunakan vibrant green */
     font-weight: 600;
     font-size: 0.95em;
     margin-left: 10px;
@@ -436,7 +443,7 @@ body {
 
 
 .paket-item h3 {
-    color: var(--primary-dark); /* Menggunakan biru royal */
+    color: var(--primary-dark); /* Menggunakan deep navy blue */
     font-size: 1.6em;
     margin-bottom: 12px;
     text-align: center;
@@ -449,7 +456,7 @@ body {
 }
 
 .paket-item .price {
-    color: var(--accent-blue); /* Menggunakan warna aksen baru (ungu) */
+    color: var(--accent-blue); /* Menggunakan vibrant green */
     font-size: 1.4em;
     font-weight: 700;
     text-align: center;
@@ -459,7 +466,7 @@ body {
 .paket-item .bonus {
     font-style: italic;
     font-size: 0.8em;
-    color: var(--secondary-gray); /* Menggunakan biru teal */
+    color: var(--secondary-gray); /* Menggunakan mid blue */
     text-align: center;
     margin-bottom: 15px;
 }
@@ -472,14 +479,14 @@ body {
 
 /* Garansi Section */
 .garansi-section {
-    background-color: var(--primary-dark); /* Menggunakan biru royal */
+    background-color: #5E3A8D; /* Deep Purple */
     color: white;
 }
 .garansi-section h2 {
     color: white;
 }
 .garansi-section i {
-    color: var(--accent-blue); /* Menggunakan warna aksen baru (ungu) */
+    color: var(--accent-blue); /* Menggunakan vibrant green */
 }
 
 /* Contact Section */
@@ -487,25 +494,25 @@ body {
     background-color: white;
 }
 .contact-section h2 {
-    color: var(--primary-dark); /* Menggunakan biru royal */
+    color: var(--primary-dark); /* Menggunakan deep navy blue */
 }
 .contact-section i {
-    color: var(--primary-dark); /* Menggunakan biru royal */
+    color: var(--primary-dark); /* Menggunakan deep navy blue */
 }
 .contact-section a {
-    color: var(--primary-dark); /* Menggunakan biru royal */
+    color: var(--primary-dark); /* Menggunakan deep navy blue */
 }
 
 /* Footer */
 .main-footer {
-    background-color: var(--primary-dark); /* Menggunakan biru royal */
+    background-color: #5E3A8D; /* Deep Purple */
     color: white;
     text-align: center;
     padding: 15px 0;
     margin-top: 30px;
     font-size: 0.85em;
     border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-top-right-radius: 8_px;
 }
 
 /* Responsive Adjustments */
@@ -613,13 +620,13 @@ body {
 }
 
 .modal-content h2 {
-    color: var(--primary-dark); /* Menggunakan biru royal */
+    color: var(--primary-dark); /* Menggunakan deep navy blue */
     margin-bottom: 25px;
     font-size: 1.8em;
 }
 
 .close-button {
-    color: var(--secondary-gray); /* Menggunakan biru teal */
+    color: var(--secondary-gray); /* Menggunakan mid blue */
     position: absolute;
     top: 15px;
     right: 25px;
@@ -631,7 +638,7 @@ body {
 
 .close-button:hover,
 .close-button:focus {
-    color: var(--primary-dark); /* Menggunakan biru royal */
+    color: var(--primary-dark); /* Menggunakan deep navy blue */
     text-decoration: none;
 }
 
@@ -642,6 +649,8 @@ body {
 }
 
 .modal-btn {
+    background-color: var(--accent-blue); /* Menggunakan vibrant green */
+    color: white;
     width: 100%;
     padding: 12px 20px;
     font-size: 1.1em;
