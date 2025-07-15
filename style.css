@@ -8,20 +8,19 @@
     --border-light: #E0E0E0; /* Abu-abu Sangat Terang */
     --button-hover: #2196F3; /* Biru Lebih Gelap untuk Hover */
     --shadow-color: rgba(0, 0, 0, 0.05); /* Bayangan Sangat Halus */
+    --header-height: 64px; /* --- Tambahkan variabel untuk tinggi header --- */
 }
 
-/* --- Deklarasi Font Kustom (Super Frosting) --- */
-/* Hanya tambahkan ini jika Anda memiliki file font Super Frosting */
-@font-face {
+/* --- Hapus atau komentari deklarasi @font-face untuk 'Super Frosting' jika Anda tidak menggunakannya lagi --- */
+/* @font-face {
     font-family: 'Super Frosting';
     src: url('fonts/SuperFrosting.woff2') format('woff2'),
          url('fonts/SuperFrosting.woff') format('woff');
-    /* Sesuaikan path ke file font Anda */
     font-weight: normal;
     font-style: normal;
-    font-display: swap; /* Memastikan teks tetap terlihat saat font dimuat */
-}
-/* --- Akhir Deklarasi Font Kustom --- */
+    font-display: swap;
+} */
+/* --- Akhir Hapus --- */
 
 /* Reset dan Styling Umum */
 * {
@@ -61,20 +60,16 @@ body {
     left: 0; /* Menempel di kiri */
     width: 100%; /* Lebar penuh */
     z-index: 100; /* Memastikan header berada di atas konten lain */
+    height: var(--header-height); /* --- Tetapkan tinggi header agar konsisten --- */
 }
 
 .main-header h1 {
     font-size: 2em; /* Ukuran font header */
     letter-spacing: 1px;
     margin: 0;
-    font-weight: 600; /* Sedikit lebih tebal */
-    /* --- Perubahan Font Kios Sosmed --- */
-    font-family: 'Super Frosting', cursive; /* Gunakan 'Super Frosting' */
-    /* Tambahkan 'cursive' sebagai fallback jika font tidak dimuat */
-    /* Jika Anda tidak punya Super Frosting, Anda bisa coba ini dari Google Fonts: */
-    /* font-family: 'Pacifico', cursive; */
-    /* font-family: 'Sacramento', cursive; */
-    /* font-family: 'Great Vibes', cursive; */
+    font-weight: 700; /* Sedikit lebih tebal, Poppins 700 */
+    /* --- Perubahan Font Kios Sosmed menjadi Poppins --- */
+    font-family: 'Poppins', sans-serif; /* Ganti dengan Poppins */
     /* --- Akhir Perubahan Font --- */
 }
 
@@ -188,17 +183,14 @@ body {
 /* Hero Section */
 .hero-section {
     text-align: center;
-    padding: 60px 20px; /* Padding lebih kecil */
+    padding: 60px 20px; /* Padding asli */
     background: linear-gradient(to right, var(--primary-dark), var(--secondary-gray));
     color: white;
     margin-bottom: 30px;
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 6px 12px var(--shadow-color); /* Bayangan lebih halus */
     /* --- Perubahan untuk memperbaiki teks yang tertimpa header --- */
-    padding-top: calc(60px + 64px); /* (Padding asli + Tinggi header fixed) */
-    /* Tinggi header fixed sekitar 64px (12px padding atas + 12px padding bawah + tinggi konten) */
-    /* Sesuaikan 64px jika tinggi header Anda berbeda */
-    /* Margin-top dihilangkan karena diganti padding-top */
+    padding-top: calc(60px + var(--header-height)); /* Padding asli + tinggi header */
     /* --- Akhir Perubahan --- */
 }
 
@@ -535,6 +527,11 @@ body {
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+    /* Pastikan tinggi header juga didefinisikan untuk mobile jika berbeda */
+    :root {
+        --header-height: 60px; /* Contoh tinggi header di mobile */
+    }
+
     .main-header {
         padding: 12px 15px;
     }
@@ -550,8 +547,8 @@ body {
 
     .hero-section {
         padding: 40px 15px;
-        /* Sesuaikan padding-top untuk mobile agar tidak tertimpa header */
-        padding-top: calc(40px + 60px); /* (Padding asli + Tinggi header fixed di mobile) */
+        /* Gunakan variabel header-height juga di mobile */
+        padding-top: calc(40px + var(--header-height));
     }
     .hero-section h2 {
         font-size: 2em;
@@ -611,9 +608,7 @@ body {
 
 /* --- Gaya untuk Modal Pop-up --- */
 .modal {
-    /* --- Perubahan: Sembunyikan secara default --- */
     display: none; /* Sembunyikan modal secara default */
-    /* --- Akhir Perubahan --- */
     position: fixed; /* Tetap di tempat bahkan saat di-scroll */
     z-index: 200; /* Letakkan di atas konten lain dan header */
     left: 0;
@@ -624,7 +619,6 @@ body {
     background-color: rgba(0,0,0,0.6); /* Latar belakang gelap transparan */
     justify-content: center; /* Pusatkan secara horizontal */
     align-items: center; /* Pusatkan secara vertikal */
-    /* Saat modal aktif, JS akan menambahkan display: flex */
 }
 
 .modal-content {
