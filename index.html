@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kios Sosmed - Jual Followers, Likes, & Views</title>
-    <!-- Font Awesome untuk ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Link ke file CSS eksternal -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,14 +24,13 @@
             </ul>
         </nav>
         <div class="hamburger-menu" id="hamburger">
-            <i class="fas fa-bars"></i> <!-- Ikon hamburger standar -->
+            <i class="fas fa-bars"></i>
         </div>
     </header>
 
-    <!-- Mobile Navigation Overlay -->
     <div class="mobile-nav" id="mobile-nav">
         <div class="hamburger-menu close-btn" id="close-mobile-nav">
-            <i class="fas fa-times"></i> <!-- Ikon silang standar -->
+            <i class="fas fa-times"></i>
         </div>
         <ul>
             <li><a href="#" data-target-section="instagram">Instagram</a></li>
@@ -78,32 +75,20 @@
             </div>
         </section>
 
-        <!-- Product Sections - Hidden by default -->
         <section id="instagram" class="page-section">
             <h2>Layanan Instagram</h2>
             <div class="product-grid">
-                <!-- Followers Instagram -->
                 <div class="product-category">
                     <h3>Followers Instagram</h3>
-                    <div class="product-list">
-                        <!-- Data ini akan di-generate oleh JS -->
-                    </div>
+                    <div class="product-list"></div>
                 </div>
-
-                <!-- Likes Instagram -->
                 <div class="product-category">
                     <h3>Likes Instagram</h3>
-                    <div class="product-list">
-                        <!-- Data ini akan di-generate oleh JS -->
-                    </div>
+                    <div class="product-list"></div>
                 </div>
-
-                <!-- Views Reels Instagram -->
                 <div class="product-category">
                     <h3>Views Reels Instagram</h3>
-                    <div class="product-list">
-                        <!-- Data ini akan di-generate oleh JS -->
-                    </div>
+                    <div class="product-list"></div>
                 </div>
             </div>
         </section>
@@ -111,28 +96,17 @@
         <section id="tiktok" class="page-section">
             <h2>Layanan TikTok</h2>
             <div class="product-grid">
-                <!-- Followers TikTok -->
                 <div class="product-category">
                     <h3>Followers TikTok</h3>
-                    <div class="product-list">
-                        <!-- Data ini akan di-generate oleh JS -->
-                    </div>
+                    <div class="product-list"></div>
                 </div>
-
-                <!-- Likes TikTok -->
                 <div class="product-category">
                     <h3>Likes TikTok</h3>
-                    <div class="product-list">
-                        <!-- Data ini akan di-generate oleh JS -->
-                    </div>
+                    <div class="product-list"></div>
                 </div>
-
-                <!-- Views TikTok -->
                 <div class="product-category">
                     <h3>Views TikTok</h3>
-                    <div class="product-list">
-                        <!-- Data ini akan di-generate oleh JS -->
-                    </div>
+                    <div class="product-list"></div>
                 </div>
             </div>
         </section>
@@ -140,7 +114,6 @@
         <section id="paket-hemat" class="page-section">
             <h2>Paket Hemat</h2>
             <div class="paket-grid">
-                <!-- Paket Instagram -->
                 <div class="paket-item">
                     <h3>Paket Hemat Instagram</h3>
                     <p>1000 Followers Instagram</p>
@@ -150,7 +123,6 @@
                     <p class="bonus">+ Bonus 5rb views</p>
                     <button class="btn btn-secondary order-btn" data-product-id="paket_ig_hemat" data-price="90000">Pesan Sekarang</button>
                 </div>
-                <!-- Paket TikTok -->
                 <div class="paket-item">
                     <h3>Paket Hemat TikTok</h3>
                     <p>1000 Followers TikTok</p>
@@ -179,12 +151,24 @@
     </main>
 
     <footer class="main-footer">
-        <div class="container">
-            <!-- Teks footer yang dihapus -->
-        </div>
+        <div class="container"></div>
     </footer>
 
-    <!-- Link ke file JavaScript eksternal -->
+    <div id="service-choice-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Pilih Layanan Kami</h2>
+            <div class="modal-options">
+                <button class="btn btn-primary modal-btn" data-service="instagram">
+                    <i class="fab fa-instagram"></i> Instagram
+                </button>
+                <button class="btn btn-primary modal-btn" data-service="tiktok">
+                    <i class="fab fa-tiktok"></i> TikTok
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
