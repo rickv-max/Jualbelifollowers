@@ -10,6 +10,19 @@
     --shadow-color: rgba(0, 0, 0, 0.05); /* Bayangan Sangat Halus */
 }
 
+/* --- Deklarasi Font Kustom (Super Frosting) --- */
+/* Hanya tambahkan ini jika Anda memiliki file font Super Frosting */
+@font-face {
+    font-family: 'Super Frosting';
+    src: url('fonts/SuperFrosting.woff2') format('woff2'),
+         url('fonts/SuperFrosting.woff') format('woff');
+    /* Sesuaikan path ke file font Anda */
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* Memastikan teks tetap terlihat saat font dimuat */
+}
+/* --- Akhir Deklarasi Font Kustom --- */
+
 /* Reset dan Styling Umum */
 * {
     box-sizing: border-box;
@@ -55,7 +68,14 @@ body {
     letter-spacing: 1px;
     margin: 0;
     font-weight: 600; /* Sedikit lebih tebal */
-    font-family: 'Montserrat', sans-serif; /* Contoh font elegan */
+    /* --- Perubahan Font Kios Sosmed --- */
+    font-family: 'Super Frosting', cursive; /* Gunakan 'Super Frosting' */
+    /* Tambahkan 'cursive' sebagai fallback jika font tidak dimuat */
+    /* Jika Anda tidak punya Super Frosting, Anda bisa coba ini dari Google Fonts: */
+    /* font-family: 'Pacifico', cursive; */
+    /* font-family: 'Sacramento', cursive; */
+    /* font-family: 'Great Vibes', cursive; */
+    /* --- Akhir Perubahan Font --- */
 }
 
 /* Hamburger Menu Icon (ukuran ikon itu sendiri) */
@@ -174,8 +194,14 @@ body {
     margin-bottom: 30px;
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 6px 12px var(--shadow-color); /* Bayangan lebih halus */
-    margin-top: 70px; /* Sesuaikan dengan tinggi header Anda */
+    /* --- Perubahan untuk memperbaiki teks yang tertimpa header --- */
+    padding-top: calc(60px + 64px); /* (Padding asli + Tinggi header fixed) */
+    /* Tinggi header fixed sekitar 64px (12px padding atas + 12px padding bawah + tinggi konten) */
+    /* Sesuaikan 64px jika tinggi header Anda berbeda */
+    /* Margin-top dihilangkan karena diganti padding-top */
+    /* --- Akhir Perubahan --- */
 }
+
 
 .hero-section h2 {
     font-size: 2.5em; /* Ukuran font lebih kecil */
@@ -524,7 +550,8 @@ body {
 
     .hero-section {
         padding: 40px 15px;
-        margin-top: 60px; /* Sesuaikan juga di mobile */
+        /* Sesuaikan padding-top untuk mobile agar tidak tertimpa header */
+        padding-top: calc(40px + 60px); /* (Padding asli + Tinggi header fixed di mobile) */
     }
     .hero-section h2 {
         font-size: 2em;
@@ -584,7 +611,9 @@ body {
 
 /* --- Gaya untuk Modal Pop-up --- */
 .modal {
+    /* --- Perubahan: Sembunyikan secara default --- */
     display: none; /* Sembunyikan modal secara default */
+    /* --- Akhir Perubahan --- */
     position: fixed; /* Tetap di tempat bahkan saat di-scroll */
     z-index: 200; /* Letakkan di atas konten lain dan header */
     left: 0;
@@ -593,9 +622,9 @@ body {
     height: 100%; /* Tinggi penuh */
     overflow: auto; /* Aktifkan scroll jika konten modal terlalu besar */
     background-color: rgba(0,0,0,0.6); /* Latar belakang gelap transparan */
-    display: flex; /* Gunakan flexbox untuk pemosisian tengah */
     justify-content: center; /* Pusatkan secara horizontal */
     align-items: center; /* Pusatkan secara vertikal */
+    /* Saat modal aktif, JS akan menambahkan display: flex */
 }
 
 .modal-content {
